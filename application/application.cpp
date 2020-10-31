@@ -1,25 +1,37 @@
 ﻿#include <iostream>
-#include <array>
+#include <vector>
+
 using namespace std;
+
+void printVector(vector<int>* input)
+{
+	for (int i = 0; i < input->size(); i++)
+	{
+		cout << input->at(i)<<endl;
+	}
+}
+
+void printVector2(vector<int>& input)
+{
+	for (int i = 0; i < input.size(); i++)
+	{
+		cout << input[i] << endl;
+	}
+}
 
 int main()
 {
-	array<int, 4>numbers;
+	int size;
+	cout << "Provide a size for your array: ";
+	cin >> size;
+	vector<int>numbers;
 
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < size; i++)
 	{
-		numbers[i] = i;
-		//cout << numbers[i]<<endl;
-	}
-
-	int* ptr_numbers = &numbers[0];
-
-	for (int i = 0; i < 4; i++)
-	{
-		cout << *ptr_numbers << endl;
-		++ptr_numbers;
+		numbers.push_back(i);
 	}
 	
+	printVector2(numbers);
 
 	return 0;
 }
