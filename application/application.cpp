@@ -1,37 +1,40 @@
 ﻿#include <iostream>
-#include <vector>
-
+#include <map>
+#include <fstream>
+#include <string>
 using namespace std;
 
-void printVector(vector<int>* input)
+void record_line(map<string, int>& dictionary, string line)
 {
-	for (int i = 0; i < input->size(); i++)
-	{
-		cout << input->at(i)<<endl;
-	}
-}
-
-void printVector2(vector<int>& input)
-{
-	for (int i = 0; i < input.size(); i++)
-	{
-		cout << input[i] << endl;
-	}
+	string delimiter = " ";
+	
 }
 
 int main()
 {
-	int size;
-	cout << "Provide a size for your array: ";
-	cin >> size;
-	vector<int>numbers;
-
-	for (int i = 0; i < size; i++)
+	map<string, int>dictionary;
+	ifstream input("lorem.txt");
+	if (input.is_open())
 	{
-		numbers.push_back(i);
+		string word;
+		while (getline(input, word))
+		{
+			if (dictionary.find(word)==dictionary.end())
+			{
+				dictionary.insert({ word,1 });
+			}
+			else
+			{
+				dictionary[word]++;
+			}
+		}
 	}
 	
-	printVector2(numbers);
+	string tmp;
+	cout << "Chose a word: " << endl;
+	cin >> tmp;
+	cout << "This word " << tmp << " appearas "<<dictionary[tmp]<<" times." << endl;
 
+	
 	return 0;
 }
