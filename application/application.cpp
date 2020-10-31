@@ -1,19 +1,25 @@
 ﻿#include <iostream>
+#include <array>
 using namespace std;
 
 int main()
 {
-	int variable = 6;
-	int* ptr;
-	ptr = &variable;
+	array<int, 4>numbers;
 
-	cout << &variable<<endl;
-	cout << &ptr << endl;
-	ptr = &variable;
-	cout << *ptr << endl;
+	for (int i = 0; i < 4; i++)
+	{
+		numbers[i] = i;
+		//cout << numbers[i]<<endl;
+	}
 
-	*ptr = 25;
-	cout << variable << endl;
+	int* ptr_numbers = &numbers[0];
+
+	for (int i = 0; i < 4; i++)
+	{
+		cout << *ptr_numbers << endl;
+		++ptr_numbers;
+	}
+	
 
 	return 0;
 }
